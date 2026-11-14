@@ -18,13 +18,14 @@ def current_calendar():
 current_calendar()
 
 class Task:
-    def __init__(self, name: type = str, date: type = str, desc: type = str, location: type = str, host: type = str, tags: type = list):
-        self.task_name = name
-        self.task_date = date
-        self.task_host = host
-        self.task_desc = desc
-        self.task_location = location
-        self.task_tags = tags
+    def __init__(self, name: type = str, date: type = str, time: type = str, desc: type = str, location: type = str, host: type = str, tags: type = list):
+        self.task_name = name ## Task name 
+        self.task_date = date ## The Date
+        self.task_time = time #The time of the task
+        self.task_host = host ## The host
+        self.task_desc = desc ## The description
+        self.task_location = location ### Location
+        self.task_tags = tags ### Extra tags
 
         self.task_importance: type = int
 
@@ -40,15 +41,24 @@ class Task:
                 return True
         return False
 
-    def get_importance(self):
-        importance = 0
+    def get_importance(self, user):
+        importance = -1
+        with open ("host.txt") as file: #
+            file.readline()
+            for i in file.readlines():
+                entry = i.split(",")
+                if entry[0] == self.task_host:
+                    if user == (self.task_host):
+                        importance = int(entry[1].strip())
+                    pass
 
 
         return importance
     pass
 
-hackathon = Task("Hackathon", "2026-11-13", "BITHCH", "McNair Hall", "COE", ["compsci", "robotics", "nerd", "programming"])
+hackathon = Task("Name", "2026-11-13", "11:20", "BITCH", "McNair Hall", "COE", ["H", "Y"])
 
+print(hackathon.get_importance("COE"))
 #def sort():
 
 #def notify():
