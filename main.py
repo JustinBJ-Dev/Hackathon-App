@@ -43,12 +43,12 @@ class Task:
 
     def get_importance(self, user):
         importance = -1
-        with open ("host.txt") as file: #
+        with open ("host.txt") as file: 
             file.readline()
             for i in file.readlines():
                 entry = i.split(",")
                 if entry[0] == self.task_host:
-                    if user == (self.task_host):
+                    if user == (self.task_host):  ### User should have a function to check if it is in the group. Ex user.is_in(self.task_host)
                         importance = int(entry[1].strip())
                     pass
 
@@ -59,7 +59,7 @@ class Task:
 hackathon = Task("Name", "2026-11-13", "11:20", "BITCH", "McNair Hall", "COE", ["H", "Y"])
 
 print(hackathon.get_importance("COE"))
-#def sort():
+#def sort(list, by):
 
 #def notify():
 
